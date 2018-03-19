@@ -2,7 +2,7 @@ import platform
 import SCons
 
 # Add the path for SCons Tools in the Build Tools Submodule
-SCons.Tool.DefaultToolpath.insert(0, Dir('../../Tool').abspath)
+SCons.Tool.DefaultToolpath.insert(0, Dir('tool').abspath)
 
 # Create Build Environment
 temp_env = Environment()
@@ -15,7 +15,7 @@ elif platform.system().lower().startswith('linux'):
 elif platform.system().lower().startswith('darwin'):
     temp_env.PrependENVPath(
         "PATH", '/specific/texlive/bin/universal-darwin')
-env = Environment(tools=['default', 'pdflatex', 'makotemplate'], ENV=temp_env['ENV'])
+env = Environment(tools=['default', 'pdflatex'], ENV=temp_env['ENV'])
 env.Append(LATEXFLAGS=['-halt-on-error', '-shell-escape'],
            PDFLATEXFLAGS=['-synctex=1', '-halt-on-error', '-shell-escape'])
 
