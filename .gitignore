@@ -2,7 +2,6 @@
 .ropeproject
 .sconsign.dblite
 build
-dist
 .~lock*
 *.sta
 _minted-document
